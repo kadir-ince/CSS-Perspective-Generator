@@ -8,6 +8,26 @@ export default {
       rotateZ: 0,
     };
   },
+  computed: {
+    box() {
+      return {
+        transform: `
+        perspective(${this.perspective}px)
+        rotateX(${this.rotateX}deg)
+        rotateY(${this.rotateY}deg)
+        rotateZ(${this.rotateZ}deg)
+        `,
+      };
+    },
+  },
+  methods: {
+    reset() {
+      this.perspective = 100;
+      this.rotateX = 0;
+      this.rotateY = 0;
+      this.rotateZ = 0;
+    },
+  },
 };
 </script>
 
@@ -17,25 +37,25 @@ export default {
     <main>
       <section class="settings">
         <div class="settings-container">
-          <label>perspective: 0px;</label>
-          <input type="range" min="0" max="999" />
+          <label>perspective: {{ perspective }}px;</label>
+          <input type="range" min="0" max="999" v-model="perspective" />
 
-          <label>rotateX: 0deg; </label>
-          <input type="range" min="-180" max="180" />
+          <label>rotateX: {{ rotateX }}deg; </label>
+          <input type="range" min="-180" max="180" v-model="rotateX" />
 
-          <label>rotateY: 0deg; </label>
-          <input type="range" min="-180" max="180" />
+          <label>rotateY: {{ rotateY }}deg; </label>
+          <input type="range" min="-180" max="180" v-model="rotateY" />
 
-          <label>rotateZ: 0deg; </label>
-          <input type="range" min="-180" max="180" />
+          <label>rotateZ: {{ rotateZ }}deg; </label>
+          <input type="range" min="-180" max="180" v-model="rotateZ" />
 
-          <button type="button">Reset</button>
+          <button type="button" @click.prevent="reset">Reset</button>
           <button type="button">Copy</button>
         </div>
       </section>
       <section class="output">
         <div class="box-container">
-          <div class="box"></div>
+          <div class="box" v-bind:style="box"></div>
         </div>
       </section>
     </main>
