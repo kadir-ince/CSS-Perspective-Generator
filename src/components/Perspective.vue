@@ -27,6 +27,16 @@ export default {
       this.rotateY = 0;
       this.rotateZ = 0;
     },
+    copy() {
+      const codeText = document.createElement("textarea");
+      codeText.value = `transform: ${this.box.transform}`;
+
+      document.body.appendChild(codeText);
+      codeText.select();
+
+      document.execCommand("copy");
+      document.body.removeChild(codeText);
+    },
   },
 };
 </script>
@@ -50,7 +60,7 @@ export default {
           <input type="range" min="-180" max="180" v-model="rotateZ" />
 
           <button type="button" @click.prevent="reset">Reset</button>
-          <button type="button">Copy</button>
+          <button type="button" @click.prevent="copy">Copy Code</button>
         </div>
       </section>
       <section class="output">
