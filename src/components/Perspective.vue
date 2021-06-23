@@ -60,7 +60,9 @@ export default {
           <input type="range" min="-180" max="180" v-model="rotateZ" />
 
           <button type="button" @click.prevent="reset">Reset</button>
-          <button type="button" @click.prevent="copy">Copy Code</button>
+          <button type="button" @click.prevent="copy" class="button">
+            Copy Code
+          </button>
         </div>
       </section>
       <section class="output">
@@ -73,6 +75,7 @@ export default {
 </template>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
 html {
   box-sizing: border-box;
   width: 100%;
@@ -102,6 +105,7 @@ h2 {
   text-align: center;
   font-size: 40px;
   margin: 20px;
+  color: #8d81f3;
 }
 main {
   display: flex;
@@ -127,7 +131,9 @@ section.settings {
 }
 .box-container {
   padding: 50px;
-  border: 1px solid #8d81f3;
+  border: 2px solid #8d81f3;
+  border-radius: 12px;
+  box-shadow: 5px 5px 45px 0px rgba(255, 255, 255, 0.8);
 }
 .box {
   width: 150px;
@@ -136,14 +142,17 @@ section.settings {
 }
 
 button {
-  background-color: #8d81f3;
+  background-color: #594fec;
   color: #fff;
   display: inline-block;
   font-size: 20px;
   padding: 10px;
   outline: none;
   border: none;
+  border-radius: 8px;
+  font-family: "Raleway", sans-serif;
   margin-right: 10px;
+  cursor: pointer;
 }
 
 label {
